@@ -11,6 +11,7 @@
 		918B73211BAFDBBE0030A449 /* ARNTransitionAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918B73161BAFDBB90030A449 /* ARNTransitionAnimator.framework */; };
 		918B73261BAFDBC00030A449 /* ARNTransitionAnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B73251BAFDBC00030A449 /* ARNTransitionAnimatorTests.swift */; };
 		918B73311BAFDC030030A449 /* ARNTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B73301BAFDC030030A449 /* ARNTransitionAnimator.swift */; };
+		EF6B2B801EA8A8BC00DCD4EC /* ARNTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B2B7F1EA8A8BC00DCD4EC /* ARNTransitionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		918B73251BAFDBC00030A449 /* ARNTransitionAnimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARNTransitionAnimatorTests.swift; sourceTree = "<group>"; };
 		918B73271BAFDBC10030A449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		918B73301BAFDC030030A449 /* ARNTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARNTransitionAnimator.swift; sourceTree = "<group>"; };
+		EF6B2B7F1EA8A8BC00DCD4EC /* ARNTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARNTransitionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		918B73181BAFDBB90030A449 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				EF6B2B7F1EA8A8BC00DCD4EC /* ARNTransitionViewController.swift */,
 				918B73191BAFDBBC0030A449 /* ARNTransitionAnimator.h */,
 				918B73301BAFDC030030A449 /* ARNTransitionAnimator.swift */,
 				918B731B1BAFDBBE0030A449 /* Info.plist */,
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				918B73311BAFDC030030A449 /* ARNTransitionAnimator.swift in Sources */,
+				EF6B2B801EA8A8BC00DCD4EC /* ARNTransitionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +352,7 @@
 				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_BUNDLE_IDENTIFIER = xxxAIRINxxx.ARNTransitionAnimator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

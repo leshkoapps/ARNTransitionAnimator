@@ -54,7 +54,13 @@ open class ARNTransitionAnimator: UIPercentDrivenInteractiveTransition {
     open var useKeyframeAnimation : Bool = false
     
     // Interactive Transition Gesture
-    
+    public var enableInteractiveGesture : Bool = true {
+        didSet{
+            if enableInteractiveGesture==false{
+                self.unregisterPanGesture()
+            }
+        }
+    }
     open weak var gestureTargetView : UIView? {
         willSet {
             self.unregisterPanGesture()
@@ -126,6 +132,10 @@ open class ARNTransitionAnimator: UIPercentDrivenInteractiveTransition {
     
     fileprivate func registerPanGesture() {
         self.unregisterPanGesture()
+        
+        if self.enableInteractiveGesture == false {
+            return;
+        }
         
         self.gesture = UIPanGestureRecognizer(target: self, action: #selector(ARNTransitionAnimator.handlePan(_:)))
         self.gesture!.delegate = self
