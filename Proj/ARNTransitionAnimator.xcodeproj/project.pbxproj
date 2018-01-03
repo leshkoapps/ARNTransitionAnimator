@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		912F4B181D6E8F0100B9F808 /* TransitionGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912F4B171D6E8F0100B9F808 /* TransitionGestureHandler.swift */; };
 		912F4B1A1D6E919F00B9F808 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912F4B191D6E919F00B9F808 /* TransitionAnimator.swift */; };
-		912F4B1C1D6E950000B9F808 /* AnimatedTransitioning .swift in Sources */ = {isa = PBXBuildFile; fileRef = 912F4B1B1D6E950000B9F808 /* AnimatedTransitioning .swift */; };
+		912F4B1C1D6E950000B9F808 /* AnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912F4B1B1D6E950000B9F808 /* AnimatedTransitioning.swift */; };
 		918B731A1BAFDBBC0030A449 /* ARNTransitionAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 918B73191BAFDBBC0030A449 /* ARNTransitionAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		918B73211BAFDBBE0030A449 /* ARNTransitionAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918B73161BAFDBB90030A449 /* ARNTransitionAnimator.framework */; };
 		918B73261BAFDBC00030A449 /* ARNTransitionAnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B73251BAFDBC00030A449 /* ARNTransitionAnimatorTests.swift */; };
@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		912F4B171D6E8F0100B9F808 /* TransitionGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionGestureHandler.swift; sourceTree = "<group>"; };
 		912F4B191D6E919F00B9F808 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
-		912F4B1B1D6E950000B9F808 /* AnimatedTransitioning .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnimatedTransitioning .swift"; sourceTree = "<group>"; };
+		912F4B1B1D6E950000B9F808 /* AnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTransitioning.swift; sourceTree = "<group>"; };
 		918B73161BAFDBB90030A449 /* ARNTransitionAnimator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ARNTransitionAnimator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		918B73191BAFDBBC0030A449 /* ARNTransitionAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARNTransitionAnimator.h; sourceTree = "<group>"; };
 		918B731B1BAFDBBE0030A449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 				918B73191BAFDBBC0030A449 /* ARNTransitionAnimator.h */,
 				918B73301BAFDC030030A449 /* ARNTransitionAnimator.swift */,
 				91A6C1F61D4755E4008F3A22 /* TransitionAnimatable.swift */,
-				912F4B1B1D6E950000B9F808 /* AnimatedTransitioning .swift */,
+				912F4B1B1D6E950000B9F808 /* AnimatedTransitioning.swift */,
 				91A6C1F81D4758A9008F3A22 /* InteractiveTransitioning.swift */,
 				912F4B191D6E919F00B9F808 /* TransitionAnimator.swift */,
 				912F4B171D6E8F0100B9F808 /* TransitionGestureHandler.swift */,
@@ -220,7 +220,7 @@
 				912F4B181D6E8F0100B9F808 /* TransitionGestureHandler.swift in Sources */,
 				91A6C1F71D4755E4008F3A22 /* TransitionAnimatable.swift in Sources */,
 				91A6C1F91D4758A9008F3A22 /* InteractiveTransitioning.swift in Sources */,
-				912F4B1C1D6E950000B9F808 /* AnimatedTransitioning .swift in Sources */,
+				912F4B1C1D6E950000B9F808 /* AnimatedTransitioning.swift in Sources */,
 				918B73311BAFDC030030A449 /* ARNTransitionAnimator.swift in Sources */,
 				912F4B1A1D6E919F00B9F808 /* TransitionAnimator.swift in Sources */,
 			);
@@ -384,6 +384,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/../Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"-DNDEBUG",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = xxxAIRINxxx.ARNTransitionAnimator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

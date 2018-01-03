@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public protocol TransitionAnimatable : class {
+@objc public protocol TransitionAnimatable : class {
     
     func sourceVC() -> UIViewController
     func destVC() -> UIViewController

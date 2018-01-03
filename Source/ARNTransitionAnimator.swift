@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public enum TransitionType {
+@objc public enum TransitionType : Int {
     case push
     case pop
     case present
@@ -24,27 +24,27 @@ public enum TransitionType {
     }
 }
 
-public final class ARNTransitionAnimator : NSObject {
+@objc public final class ARNTransitionAnimator : NSObject {
     
     public let duration: TimeInterval
     public let animation: TransitionAnimatable
     
     fileprivate var interactiveTransitioning: InteractiveTransitioning?
     
-    public init(duration: TimeInterval, animation: TransitionAnimatable) {
+    @objc public init(duration: TimeInterval, animation: TransitionAnimatable) {
         self.duration = duration
         self.animation = animation
         
         super.init()
     }
     
-    public func registerInteractiveTransitioning(_ transitionType: TransitionType, gestureHandler: TransitionGestureHandler) {
+    @objc public func registerInteractiveTransitioning(_ transitionType: TransitionType, gestureHandler: TransitionGestureHandler) {
         let d = CGFloat(self.duration)
         let animator = TransitionAnimator(transitionType: transitionType, animation: animation)
         self.interactiveTransitioning = InteractiveTransitioning(duration: d, animator: animator, gestureHandler)
     }
     
-    public func unregisgterInteractiveTransitioning() {
+    @objc public func unregisgterInteractiveTransitioning() {
         self.interactiveTransitioning = nil
     }
 }

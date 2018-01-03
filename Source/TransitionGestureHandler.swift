@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-public enum DirectionType {
+@objc public enum DirectionType : Int{
     case top
     case bottom
     case left
@@ -24,7 +24,7 @@ public enum TransitionState {
     case cancel
 }
 
-public final class TransitionGestureHandler : NSObject {
+@objc public final class TransitionGestureHandler : NSObject {
     
     public let direction: DirectionType
     
@@ -46,7 +46,7 @@ public final class TransitionGestureHandler : NSObject {
         self.unregisterGesture()
     }
     
-    public init(targetVC: UIViewController, direction: DirectionType) {
+    @objc public init(targetVC: UIViewController, direction: DirectionType) {
         self.targetView = targetVC.view
         self.direction = direction
         
@@ -56,7 +56,7 @@ public final class TransitionGestureHandler : NSObject {
     }
     
     
-    public init(targetView: UIView, direction: DirectionType) {
+    @objc public init(targetView: UIView, direction: DirectionType) {
         self.targetView = targetView
         self.direction = direction
         
