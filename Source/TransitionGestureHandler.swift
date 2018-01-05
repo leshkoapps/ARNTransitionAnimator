@@ -30,8 +30,8 @@ public enum TransitionState {
     
     public var updateGestureHandler: ((TransitionState) -> Void)?
     
-    public var panStartThreshold: CGFloat = 10.0
-    public var panCompletionThreshold: CGFloat = 30.0
+    @objc public var panStartThreshold: CGFloat = 10.0
+    @objc public var panCompletionThreshold: CGFloat = 30.0
     public var panBoundsPoint: CGPoint?
     
     fileprivate let targetView: UIView
@@ -65,14 +65,14 @@ public enum TransitionState {
         self.registerGesture(self.targetView)
     }
     
-    private func registerGesture(_ view: UIView) {
+    @objc public func registerGesture(_ view: UIView) {
         self.gesture = UIPanGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
         self.gesture?.maximumNumberOfTouches = 1
         self.gesture?.delegate = self
         view.addGestureRecognizer(self.gesture!)
     }
     
-    public func unregisterGesture() {
+    @objc public func unregisterGesture() {
         guard let g = self.gesture else { return }
         g.view?.removeGestureRecognizer(g)
         self.gesture = nil
