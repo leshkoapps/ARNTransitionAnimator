@@ -26,8 +26,8 @@ import UIKit
 
 @objc public final class ARNTransitionAnimator : NSObject {
     
-    public let duration: TimeInterval
-    public let animation: TransitionAnimatable
+    @objc public let duration: TimeInterval
+    @objc public let animation: TransitionAnimatable
     
     fileprivate var interactiveTransitioning: InteractiveTransitioning?
     
