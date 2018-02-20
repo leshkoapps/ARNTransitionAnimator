@@ -116,22 +116,29 @@ public enum TransitionState {
             var velocityForSelectedDirection: CGFloat = 0.0
             switch self.direction {
             case .top, .bottom:
-                velocityForSelectedDirection = velocity.y
+                velocityForSelectedDirection = abs(velocity.y)
             case .left, .right:
-                velocityForSelectedDirection = velocity.x
+                velocityForSelectedDirection = abs(velocity.x)
             }
             
             if velocityForSelectedDirection > 0.0 && (self.percentComplete * 100) > self.panCompletionThreshold {
                 self.updateGestureHandler?(.finish)
+                self.percentComplete = 1.0
             } else {
                 self.updateGestureHandler?(.cancel)
+                self.percentComplete = 0.0
             }
+            self.isTransitioning = false
         case .cancelled:
             if !self.isTransitioning { return }
             self.updateGestureHandler?(.cancel)
+            self.isTransitioning = false
+            self.percentComplete = 0.0
         default:
             if !self.isTransitioning { return }
             self.updateGestureHandler?(.cancel)
+            self.isTransitioning = false
+            self.percentComplete = 0.0
         }
     }
     
