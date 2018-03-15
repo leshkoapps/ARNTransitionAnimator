@@ -238,6 +238,13 @@ public enum TransitionState {
 
 extension TransitionGestureHandler : UIGestureRecognizerDelegate {
     
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view is UISlider){
+            return false
+        }
+        return true
+    }
+    
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let g = self.gesture else { return false }
         guard g.view is UIScrollView else { return false }
