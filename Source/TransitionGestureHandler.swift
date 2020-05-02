@@ -26,13 +26,15 @@ public enum TransitionState {
 
 @objc public final class TransitionGestureHandler : NSObject {
     
-    public let direction: DirectionType
+    @objc public let direction: DirectionType
     
     public var updateGestureHandler: ((TransitionState) -> Void)?
     
     @objc public var panStartThreshold: CGFloat = 10.0
     @objc public var panCompletionThreshold: CGFloat = 30.0
+    @objc public var velocityThreshold: CGFloat = 0.0
     public var panBoundsPoint: CGPoint?
+    public var panFrameSize: CGSize?
     
     fileprivate let targetView: UIView
     
@@ -121,7 +123,7 @@ public enum TransitionState {
                 velocityForSelectedDirection = abs(velocity.x)
             }
             
-            if velocityForSelectedDirection > 0.0 && (self.percentComplete * 100) > self.panCompletionThreshold {
+            if velocityForSelectedDirection > self.velocityThreshold && (self.percentComplete * 100) > self.panCompletionThreshold {
                 self.updateGestureHandler?(.finish)
                 self.percentComplete = 1.0
             } else {
@@ -149,6 +151,9 @@ public enum TransitionState {
             if scrollView.contentOffset.y <= 0 && scrollView.isTracking {
                 return true
             }
+            if scrollView.contentSize.height < scrollView.frame.size.height {
+                return true
+            }
         } else {
             return true
         }
@@ -161,7 +166,6 @@ public enum TransitionState {
             self.panLocationStart = location.y
         case .bottom:
             if self.targetView is UIScrollView {
-                self.panLocationStart = 0
                 self.panLocationStart = location.y
             } else {
                 self.panLocationStart = location.y
@@ -183,7 +187,7 @@ public enum TransitionState {
     }
     
     fileprivate func updatePercentComplete(_ location: CGPoint) {
-        var bounds = CGFloat(0)
+        var bounds: CGFloat = 0.0
         if let boundsPoint = panBoundsPoint {
             switch self.direction {
             case .top, .bottom:
@@ -194,9 +198,9 @@ public enum TransitionState {
         } else {
             switch self.direction {
             case .top, .bottom:
-                bounds = self.targetView.bounds.height
+                bounds = self.panFrameSize != nil ? self.panFrameSize!.height : self.targetView.bounds.height
             case .left, .right:
-                bounds = self.targetView.bounds.width
+                bounds = self.panFrameSize != nil ? self.panFrameSize!.width : self.targetView.bounds.width
             }
         }
         switch self.direction {
@@ -230,6 +234,7 @@ public enum TransitionState {
         }
         self.isTransitioning = true
         self.updateGestureHandler?(.start)
+        self.setPanStartPoint(location)
         self.updatePercentComplete(location)
     }
 }
